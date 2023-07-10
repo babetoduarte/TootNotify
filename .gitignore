@@ -1,0 +1,19 @@
+# Usual files
+.DS_Store
+.idea
+*.log
+tmp/
+
+# Python-related files
+*.py[cod]
+*.egg
+build
+htmlcov
+
+# IDE / Editor files
+.project
+.vscode
+.code-workspace
+
+# Project files
+credentials.py

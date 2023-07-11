@@ -120,7 +120,7 @@ __If more than four media files are passed to `TootNotify.py -f` only the first 
 
 All these arguments can be used in combination with one another, meaning a *Toot* can: have a message body, have up to four images attached, have a spoiler/content warning, and be flagged as 'sensitive'!
 
-`foo@bar:~$> python toot_notify.py -r @account@instance -m "Check out this sensitive gallery!" -f 1.png 2.png 3.png 4.png -s "Very blue images containing numbers and circles" -x`
+`foo@bar:~$> python toot_notify.py -r @usert@instance -m "Check out this sensitive gallery!" -f 1.png 2.png 3.png 4.png -s "Very blue images containing numbers and circles" -x`
 
 ![Toot - DM to user containing multiple images, a content warning, and flagged as sensitive content](./media/6-Toot_All1.png "Toot - DM to user containing multiple images, a content warning, and flagged as sensitive content")
 

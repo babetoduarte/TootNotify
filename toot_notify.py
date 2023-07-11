@@ -55,7 +55,7 @@ def main(argv):
     parser.add_argument(
         "-f",
         "--files",
-        metavar="<path_to_media_file [...]>",
+        metavar="<path_to_media_file>",
         type=str,
         nargs='+',
         default=None,

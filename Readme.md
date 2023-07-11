@@ -2,7 +2,7 @@
 
 This is a python command line utility based on [Mastodon.py](https://github.com/halcy/Mastodon.py) , which is able to send direct messages to a given user on Mastodon:
 
-> $ python TootNotify.py -r @user@instance -m "Message from TootNotify!"
+`> $ python TootNotify.py -r @user@instance -m "Message from TootNotify!"`
 
 I built this tool to **notify myself via a secondary (bot) Mastodon account, when long-running processes and tasks finish**. I'm sure however, there can be more uses for this tool. 
 
@@ -12,7 +12,7 @@ Becasue of the way Mastodon works, direct messages are just regular *Toots* that
 
 This tool allows to *attach* image, video and audio files to the direct message:
 
-> $ python TootNotify.py -r @user@instance -m "Message with media" -f image1.png image2.jpg
+`> $ python TootNotify.py -r @user@instance -m "Message with media" -f image1.png image2.jpg`
     
 Due to mastodon's API specifications, media attached to posts must be of the same type: only images (up to 4 images per *Toot*), only video (a *single* video file __or GIF__), or only audio (a single *audio* file). **The current implementation allows the API to determine the MIME type of each media file by the media's extension**.
 
@@ -51,7 +51,7 @@ By default, the 'credentials.py' file is not shipped with the project, and must 
 
 Among the variables, a DEFAULT_RECIPIENT can be configured, so that when using TootNotify systematically to notify the same user, the recipient address doesn't have to be provided every time:
 
-> $ python TootNotify.py -m "Message to the default recipient!"
+`> $ python TootNotify.py -m "Message to the default recipient!"`
 
 ## Usage from the command line
 
@@ -83,13 +83,13 @@ options:
 
 ### Toot to a single user
 
-> $ python TootNotify.py -r @user@instance -m "Message!"
+`> $ python TootNotify.py -r @user@instance -m "Message!"`
 
 ![Toot - DM to user](./media/1-Toot_Single.png "Toot - DM to user")
 
 ### Toot with spoilet/content warning
 
-> $ python TootNotify.py -r @user@instance -s "Movie spoiler" -m "I can't believe Jhon dies at the end of the movie!"
+`> $ python TootNotify.py -r @user@instance -s "Movie spoiler" -m "I can't believe Jhon dies at the end of the movie!"`
 
 ![Toot - DM to user with Content Warning and hidden message](./media/2-Toot_CW1.png "Toot - DM to user with Content Warning and hidden message")
 
@@ -97,13 +97,13 @@ options:
 
 ### Toot and single media file
 
-> $ python TootNotify.py -r @user@instance -m "Look at this animation!" -f animated.gif
+`> $ python TootNotify.py -r @user@instance -m "Look at this animation!" -f animated.gif`
 
 ![Toot - DM to user with attached GIF](./media/3-Toot_GIF.png "Toot - DM to user with attached GIF")
 
 ### Toot and multiple media files
 
-> $ python TootNotify.py -r @user@instance -m "Nice image gallery!" -f image1.png image2.jpg image3.jpeg
+`> $ python TootNotify.py -r @user@instance -m "Nice image gallery!" -f image1.png image2.jpg image3.jpeg`
 
 ![Toot - DM to user with four images attached](./media/4-Toot_Gallery.png "Toot - DM to user with four images attached")
 
@@ -111,7 +111,7 @@ __If more than four media files are passed to `TootNotify.py -f` only the first 
 
 ### Toot with 'sensitive' media
 
-> $ python TootNotify.py -r @user@instance -m "Check out this sensitive content!" -f sensitive.png -x
+`> $ python TootNotify.py -r @user@instance -m "Check out this sensitive content!" -f sensitive.png -x`
 
 ![Toot - DM to user with Sensitive Content hidden](./media/5-Toot_Sensitive1.png "Toot - DM to user with Sensitive Content hidden")
 
@@ -121,7 +121,7 @@ __If more than four media files are passed to `TootNotify.py -f` only the first 
 
 All these arguments can be used in combination with one another, meaning a *Toot* can: have a message body, have up to four images attached, have a spoiler/content warning, and be flagged as 'sensitive'!
 
-> $ python toot_notify.py -r @account@instance -m "Check out this sensitive gallery!" -f 1.png 2.png 3.png 4.png -s "Very blue images containing numbers and circles" -x
+`> $ python toot_notify.py -r @account@instance -m "Check out this sensitive gallery!" -f 1.png 2.png 3.png 4.png -s "Very blue images containing numbers and circles" -x`
 
 ![Toot - DM to user containing multiple images, a content warning, and flagged as sensitive content](./media/6-Toot_All1.png "Toot - DM to user containing multiple images, a content warning, and flagged as sensitive content")
 
@@ -131,4 +131,4 @@ All these arguments can be used in combination with one another, meaning a *Toot
 
 This is an unintended use case, and it's sort of _hacky_, but you can add multiple recipients to the *Toot*, by adding multiple Mastodon handles with their respective instances as a `quoted string` passed to the `-r`/`--recipient` argument:
 
-> $ python TootNotify.py -r "@user1@instance1 @user2@instance2" -m "Group Message!"
+`> $ python TootNotify.py -r "@user1@instance1 @user2@instance2" -m "Group Message!"`

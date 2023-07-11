@@ -25,7 +25,7 @@ To use this tool you will need to have a Mastodon API application created, with 
 
 The simplest way to do this, is through the Mastodon web interface: go to Preferences > Development (*i.e.* [mastodon.social/settings/applications](mastodon.social/settings/applications))
 
-![Mastodon Preferences - Development Settings](./media/mastodon_app_credentials.png "Mastodon Prefferences - Development Settings")
+![Mastodon Preferences - Development Settings](./media/0-mastodon_app_credentials.png "Mastodon Preferences - Development Settings")
 
 Once there, click on the `New Application` button. There, give your application a Name, and click the `Submit` button on the bottom of the page. Having created an App on your account, you should be presented with a `Client key`, a `Client secret`, and `Your Access Token`. You'll need to put these strings into a python file called `credentials.py` as instructed below.
 

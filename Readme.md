@@ -6,9 +6,8 @@ This is a python command line utility based on [Mastodon.py](https://github.com/
 
 I built this tool to **notify myself via a secondary (bot) Mastodon account, when long-running processes and tasks finish**. I'm sure however, there can be more uses for this tool. 
 
-```
-Becasue of the way Mastodon works, direct messages are just regular *Toots* that mention a single user on the content of its body, and are set to have `private` visibility (only the accounts mentioned can see the *Toot*).
-```
+
+>Becasue of the way Mastodon works, direct messages are just regular *Toots* that mention a single user on the content of its body, and are set to have `private` visibility (only the accounts mentioned can see the *Toot*).
 
 This tool allows to *attach* image, video and audio files to the direct message:
 

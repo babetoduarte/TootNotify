@@ -4,7 +4,7 @@ This is a python command line utility based on [Mastodon.py](https://github.com/
 
 `> $ python toot_notify.py -r @user@instance -m "Message from TootNotify!"`
 
-I built this tool to **notify myself via a secondary (bot) Mastodon account, when long-running processes and tasks finish**. FIY, you **don't need a second account to use `TootNotify`**, you can use your own account and DM yourself! Also, I'm sure there can be many more uses for this tool.
+I built this tool to **notify myself via a secondary (bot) Mastodon account, when long-running processes and tasks finish**. FIY, ****you don't need a second account to use `TootNotify`**, you can use your own account and DM yourself! Also, I'm sure there can be many more uses for this tool.
 
 
 >Becasue of the way Mastodon works, direct messages are just regular *Toots* that mention a single user on the content of its body, and are set to have `private` visibility (only the accounts mentioned can see the *Toot*).

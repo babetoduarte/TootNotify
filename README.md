@@ -4,7 +4,7 @@ This is a python command line utility based on [Mastodon.py](https://github.com/
 
 `foo@bar:~$> tootnotify -r @user@instance -m "Message from TootNotify!"`
 
-I built this tool to **notify myself via a secondary (bot) Mastodon account, when long-running processes and tasks finish**. FIY, **you don't need a second account to use `TootNotify`**, you can use your own account and DM yourself! Also, I'm sure there can be many more uses for this tool.
+I built this tool to **notify myself via a secondary (bot) Mastodon account, when long-running processes and tasks finish**. FIY, **you don't need a second account to use TootNotify**, you can use your own account and DM yourself! Also, I'm sure there can be many more uses for this tool.
 
 
 >Becasue of the way Mastodon works, direct messages are just regular *Toots* that mention a single user on the content of its body, and are set to have `private` visibility (only the accounts mentioned can see the *Toot*).
@@ -28,52 +28,59 @@ The simplest way to do this, is through the Mastodon web interface: go to Prefer
 ![Mastodon Preferences - Development Settings](./media/0-mastodon_app_credentials.png "Mastodon Preferences - Development Settings")
 
 Once there, click on the `New Application` button. There, give your application a Name, and click the `Submit` button on the bottom of the page. Having created an App on your account, you should be presented with a `Client key`, a `Client secret`, and `Your Access Token`. You'll need to put these strings into a python file called `credentials.py` as instructed below.
+## Installation
 
-### API Authentication
+This section presents the steps needed to install TootNotify, once the API credentials have been obtained.
 
-Make sure to put your credentials in a file called `credentials.py`
+### Create `credentials.py` file
 
-By default, the 'credentials.py' file is not shipped with the project, and must be created by the user, populating the required variables for API access:
+TootNotify looks for API credentials stored as variables in the `credentials.py` file within the `TootNotify/tootnotify/` folder. By default, **the 'credentials.py' file is not shipped with the project, which means you need to create it**:
+
+`foo@bar:TootNotify$> touch tootnotify/credentials.py`
+
+Make sure that the content of `TootNotify/tootnotify/credentials.py` has this structure:
 
 ``` python
-    # Instance url (e.g. https://mastodon.social)
-    api_base_url = ""
-    # API Client Key
-    client_id = ""
-    # API Client Secret
-    client_secret = ""
-    # API Access Token
-    access_token = ""
-    # Default recipient for the private toots (e.g. @account@mastodon.social)
-    DEFAULT_RECIPIENT=""
+"""FILE: TootNotify/tootnotify/credentials.py"""
+# Instance url (e.g. https://mastodon.social)
+api_base_url = ""
+# API Client Key
+client_id = ""
+# API Client Secret
+client_secret = ""
+# API Access Token
+access_token = ""
+# Default recipient for the private toots (e.g. @account@mastodon.social)
+DEFAULT_RECIPIENT=""
 ```
 
 Among the variables, a DEFAULT_RECIPIENT can be configured, so that when using TootNotify systematically to notify the same user, the recipient address doesn't have to be provided every time:
 
 `foo@bar:~$> tootnotify -m "Message to the default recipient!"`
 
-## Installation
-
-### Create `credentials.py` file
-
 ### Install via PIP
+
+Once the `credentials.py` file is in place, we can use PIP to install TootNotify (make sure you navigate to the root of the `TootNotify` project folder):
 
 ``` bash
 foo@bar:TootNotify$> pip install .
 ```
 
-`
-
-## Usage from the command line
-
-General `help` dialog:
+We can check whether TootNotify was installed correctly, by invoking it (from anywhere) and passing it the `-h`/`--help` flag:
 
 ``` bash
-usage: toot_notify.py [-h] [-r <@user@instan.ce>] [-m <message_body>] [-s <spoiler_description>] [-f <path_to_media_file> [<path_to_media_file> ...]] [-x] [-t <timeout_in_seconds>] [-v] [--version]
+foo@bar:~$> tootnotify -h
+```
+
+and if all goes well, we should be presented with the help dialog:
+
+``` bash
+usage: tootnotify [-h] [-r <@user@instan.ce>] [-m <message_body>] [-s <spoiler_description>]
+                  [-f <path_to_media_file> [<path_to_media_file> ...]] [-x] [-t <timeout_in_seconds>] [-v] [--version]
 
 Send a Direct Message to someone on Mastodon!
 
-options:
+optional arguments:
   -h, --help            show this help message and exit
   -r <@user@instan.ce>, --recipient <@user@instan.ce>
                         User who will receive a direct message.
@@ -90,6 +97,9 @@ options:
   --version             show program's version number and exit
 ```
 
+## Usage from the command line
+
+This section presents several examples on how to use TootNotify from the command line once it has been installed.
 
 ### Toot to a single user
 
@@ -117,7 +127,7 @@ options:
 
 ![Toot - DM to user with four images attached](./media/4-Toot_Gallery.png "Toot - DM to user with four images attached")
 
-__If more than four media files are passed to `TootNotify.py -f` only the first four media files will be attached to the direct message.__
+__If more than four media files are passed to `tootnotify -f` only the first four media files will be attached to the direct message.__
 
 ### Toot with 'sensitive' media
 

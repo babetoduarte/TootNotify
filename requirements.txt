@@ -1,2 +1,0 @@
-# Package requirements for TootNotify
-mastodon.py==1.8.0

@@ -68,7 +68,7 @@ def main(argv):
     # argparse library included in Python.
     parser = argparse.ArgumentParser(
         # Name of the program
-        prog="toot_notify.py",
+        prog="tootnotify",
         # Description of the program
         description="Send a Direct Message to someone on Mastodon!",
         # Footnote that appears after the help dialog

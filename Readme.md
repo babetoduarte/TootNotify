@@ -57,14 +57,12 @@ Among the variables, a DEFAULT_RECIPIENT can be configured, so that when using T
 General `help` dialog:
 
 ``` bash
+usage: toot_notify.py [-h] [-r <@user@instan.ce>] [-m <message_body>] [-s <spoiler_description>] [-f <path_to_media_file> [<path_to_media_file> ...]] [-x] [-t <timeout_in_seconds>] [-v] [--version]
+
 Send a Direct Message to someone on Mastodon!
 
-Usage:
-
-  python toot_notify.py -m <message_in_quotes> -r <@user@instance>
-
 options:
-  -h, --help            Show this help message and exit
+  -h, --help            show this help message and exit
   -r <@user@instan.ce>, --recipient <@user@instan.ce>
                         User who will receive a direct message.
   -m <message_body>, --message <message_body>
@@ -73,10 +71,11 @@ options:
                         Description for the spoiler warning which hides the message.
   -f <path_to_media_file> [<path_to_media_file> ...], --files <path_to_media_file> [<path_to_media_file> ...]
                         List of up to 4 media files to attach to the message.
-  -x, --sensitive       Flag post/media as sensitive content (blur media)
-  -v, --verbose         Print out verbose messages
+  -x, --sensitive       Flag post/media as sensitive content (blur media).
+  -t <timeout_in_seconds>, --timeout <timeout_in_seconds>
+                        Number of seconds to wait for a single media file to upload.
+  -v, --verbose         Print out verbose messages.
   --version             show program's version number and exit
-
 ```
 
 

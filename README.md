@@ -52,6 +52,18 @@ Among the variables, a DEFAULT_RECIPIENT can be configured, so that when using T
 
 `foo@bar:~$> python toot_notify.py -m "Message to the default recipient!"`
 
+## Installation
+
+### Create `credentials.py` file
+
+### Install via PIP
+
+``` bash
+foo@bar:TootNotify$> pip install .
+```
+
+`
+
 ## Usage from the command line
 
 General `help` dialog:
@@ -85,7 +97,7 @@ options:
 
 ![Toot - DM to user](./media/1-Toot_Single.png "Toot - DM to user")
 
-### Toot with spoilet/content warning
+### Toot with spoiler/content warning
 
 `foo@bar:~$> python toot_notify.py -r @user@instance -s "Movie spoiler" -m "I can't believe Jhon dies at the end of the movie!"`
 
@@ -130,3 +142,9 @@ All these arguments can be used in combination with one another, meaning a *Toot
 This is an unintended use case, and it's sort of _hacky_, but you can add multiple recipients to the *Toot*, by adding multiple Mastodon handles with their respective instances as a `quoted string` passed to the `-r`/`--recipient` argument:
 
 `foo@bar:~$> python toot_notify.py -r "@user1@instance1 @user2@instance2" -m "Group Message!"`
+
+## License Notice
+
+TootNotify Copyright (C) 2023 Jorge A. Duarte
+This program comes with ABSOLUTELY NO WARRANTY; for details see [LICENSE](LICENSE). This is free software, and you are welcome to redistribute it under certain conditions; see [LICENSE](LICENSE) for details.
+![GNU GPLv3](./media/gplv3-with-text-136x68.png)

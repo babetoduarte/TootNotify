@@ -1,8 +1,24 @@
 #!/usr/bin/env python3
 """
-TootNotify - Send DMs to a Mastodon Account from the Command Line!
-by: Jorge A. Duarte - https://babetoduarte.github.io
-Version 1.0
+       TootNotify - Send DMs to a Mastodon Account from the Command Line!
+                     Copyright (C) 2023  Jorge A. Duarte G.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/>.
+
+                                      ===
+
+TootNotify - Version 1.0.0-alpha
+by: Jorge A. Duarte - babetoduarte@gmail.com
 July 11, 2023
 
 This is a python command line utility, which is able to send direct messages to
@@ -34,7 +50,7 @@ from time import sleep
 
 from mastodon import Mastodon
 
-from credentials import (DEFAULT_RECIPIENT, access_token, api_base_url,
+from tootnotify.credentials import (DEFAULT_RECIPIENT, access_token, api_base_url,
                          client_id, client_secret)
 
 # Setup the Mastodon API credentials and access, using the values imported from
@@ -381,6 +397,11 @@ def send_toot(message, user=DEFAULT_RECIPIENT,
 
     # Return whether the posting was successful or not
     return success
+
+
+def run_cli():
+    exit(main(argv))
+
 
 # If this script is executed from the command line
 if __name__ == '__main__':

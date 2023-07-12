@@ -16,5 +16,6 @@ htmlcov
 .code-workspace
 
 # Project files
-credentials.py
-test
+build
+tootnotify.egg-info
+tootnotify/credentials.py

@@ -146,5 +146,5 @@ This is an unintended use case, and it's sort of _hacky_, but you can add multip
 ## License Notice
 
 TootNotify Copyright (C) 2023 Jorge A. Duarte
-This program comes with ABSOLUTELY NO WARRANTY; for details see [LICENSE](LICENSE). This is free software, and you are welcome to redistribute it under certain conditions; see [LICENSE](LICENSE) for details.
+This program comes with ABSOLUTELY NO WARRANTY; for details see [LICENSE](LICENSE). This is free software, and you are welcome to redistribute it under certain conditions; see [LICENSE](LICENSE) for details.  
 ![GNU GPLv3](./media/gplv3-with-text-136x68.png)

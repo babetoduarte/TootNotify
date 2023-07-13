@@ -17,7 +17,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
                                       ===
 
-TootNotify - Version 1.0.0b
+TootNotify - Version 1.0.0-RC1
 by: Jorge A. Duarte - babetoduarte@gmail.com
 July 11, 2023
 
@@ -173,7 +173,7 @@ def main(argv):
 
     # Argument for printing out the current version of this script
     parser.add_argument(
-        "--version", action="version", version="%(prog)s v1.0.0b [07/12/2023]"
+        "--version", action="version", version="%(prog)s v1.0.0-RC1 [07/12/2023]"
     )
 
     # Parse arguments passed into the main function

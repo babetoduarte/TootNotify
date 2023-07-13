@@ -7,7 +7,7 @@ packages = ["tootnotify"]
 
 [project]
 name = "tootnotify"
-version = "1.0.0b"
+version = "1.0.0-RC1"
 authors = [
     {name="Jorge A. Duarte", email="babetoduarte@gmail.com"},
 ]

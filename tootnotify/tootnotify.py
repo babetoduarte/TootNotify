@@ -88,7 +88,7 @@ access_token = config['tootnotify']['access_token']
 DEFAULT_RECIPIENT = config['tootnotify']['DEFAULT_RECIPIENT']
 
 # Setup the Mastodon API credentials and access, using the values imported from
-# the 'credentials.py' file within the project folder.
+# the '~/.tootnotifyrc' file within the users $HOME folder.
 mastodon = Mastodon(client_id,
                     client_secret,
                     access_token,

@@ -27,31 +27,32 @@ The simplest way to do this, is through the Mastodon web interface: go to Prefer
 
 ![Mastodon Preferences - Development Settings](./media/0-mastodon_app_credentials.png "Mastodon Preferences - Development Settings")
 
-Once there, click on the `New Application` button. There, give your application a Name, and click the `Submit` button on the bottom of the page. Having created an App on your account, you should be presented with a `Client key`, a `Client secret`, and `Your Access Token`. You'll need to put these strings into a python file called `credentials.py` as instructed below.
+Once there, click on the `New Application` button. There, give your application a Name, and click the `Submit` button on the bottom of the page. Having created an App on your account, you should be presented with a `Client key`, a `Client secret`, and `Your Access Token`. You'll need to put these strings into a text configuration file called `.tootnotifyrc` located in your `$HOME` directory, as instructed below.
 ## Installation
 
 This section presents the steps needed to install TootNotify, once the API credentials have been obtained.
 
-### Create `credentials.py` file
+### Create `~/.tootnotifyrc` file
 
-TootNotify looks for API credentials stored as variables in the `credentials.py` file within the `TootNotify/tootnotify/` folder. By default, **the 'credentials.py' file is not shipped with the project, which means you need to create it**:
+TootNotify looks for API credentials stored as variables in the `~/.tootnotifyrc` file within the users `$HOME` folder. By default, **the `.tootnotifyrc` file is not shipped with the project, which means you need to create it**:
 
-`foo@bar:TootNotify$> touch tootnotify/credentials.py`
+`foo@bar:~$> touch ~/.tootnotifyrc`
 
-Make sure that the content of `TootNotify/tootnotify/credentials.py` has this structure:
+Make sure that the content of `~/.tootnotify` correspond to the following (and be sure to assign values to these variables **without any quotes**!):
 
-``` python
-"""FILE: TootNotify/tootnotify/credentials.py"""
+``` shell
+## FILE: ~/tootnotifyrc
+[tootnotify]
 # Instance url (e.g. https://mastodon.social)
-api_base_url = ""
+api_base_url = YOUR_INSTANCE_URL
 # API Client Key
-client_id = ""
+client_id = YOUR CLIENT_ID
 # API Client Secret
-client_secret = ""
+client_secret = YOUR_CLIENT_SECRET
 # API Access Token
-access_token = ""
+access_token = YOU_ACCESS_TOKEN
 # Default recipient for the private toots (e.g. @account@mastodon.social)
-DEFAULT_RECIPIENT=""
+DEFAULT_RECIPIENT = YOUR_DEFAULT_RECIPIENT
 ```
 
 Among the variables, a DEFAULT_RECIPIENT can be configured, so that when using TootNotify systematically to notify the same user, the recipient address doesn't have to be provided every time:
@@ -60,7 +61,7 @@ Among the variables, a DEFAULT_RECIPIENT can be configured, so that when using T
 
 ### Install via PIP
 
-Once the `credentials.py` file is in place, we can use PIP to install TootNotify (make sure you navigate to the root of the `TootNotify` project folder):
+Once the `~/.tootnotifyrc` control file is in place, we can use PIP to install TootNotify (make sure you navigate to the root of the `TootNotify` project folder):
 
 ``` bash
 foo@bar:TootNotify$> pip install .

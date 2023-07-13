@@ -23,35 +23,69 @@ July 11, 2023
 
 This is a python command line utility, which is able to send direct messages to
 a provided user on Mastodon. To use this tool you will need to have a Mastodon
-API application created, with its corresponding API credentials.
+API application created, with its corresponding API credentials. You will also 
+need to store these credentials in configuration file called '.tootnotifyrc' in
+your $HOME directory, as TootNotify expects to find this file using the path:
 
-By default, the 'credentials.py' file is not shipped with the project, and must
-be created by the user, populating the required variables for API access:
+    $HOME/.tootnotifyrc
 
+By default, the '.tootnotifyrc' file is not shipped with the project, and must
+be created by the user, populating the required variables for API access in the
+following format:
+
+    [tootnotify]
     # Instance url (e.g. https://mastodon.social)
-    api_base_url = ""
+    api_base_url = YOUR_INSTANCE_URL
     # API Client Key
-    client_id = ""
+    client_id = YOUR CLIENT_ID
     # API Client Secret
-    client_secret = ""
+    client_secret = YOUR_CLIENT_SECRET
     # API Access Token
-    access_token = ""
+    access_token = YOU_ACCESS_TOKEN
     # Default recipient for the private toots (e.g. @account@mastodon.social)
-    DEFAULT_RECIPIENT=""
+    DEFAULT_RECIPIENT = YOUR_DEFAULT_RECIPIENT
 
-Among the variables, a DEFAULT_RECIPIENT can be configured, so that when using
-TootNotify systematically to notify the same user, the recipient address doesn't
-have to be provided every time.
+Make sure that the first line and all variable names are copied verbatim into 
+your configuration file. Among the variables, a DEFAULT_RECIPIENT can be
+configured, so that when using TootNotify systematically to notify the same
+user, the recipient address doesn't have to be provided every time.
 
 """
 import argparse
+from configparser import ConfigParser
+from pathlib import Path
 from sys import argv, exit, stdout
 from time import sleep
 
 from mastodon import Mastodon
 
-from tootnotify.credentials import (DEFAULT_RECIPIENT, access_token, api_base_url,
-                         client_id, client_secret)
+# Read the user's configuration file stored in (~/.tootnotifyrc)
+# Instantiate a configutation parser
+config = ConfigParser()
+# Try to read the configuration file
+try:
+    # Make sure to safely open the configuration file
+    with open(f"{Path.home()}/.tootnotifyrc") as f:
+        # Read the configuration properties
+        config.read_file(f)
+# If no configuration file is found
+except IOError:
+    # Notify the user
+    print(f"ERROR: No config file ~/.tootnotifyrc found!")
+    # And exit with a non-zero status
+    exit(2)
+
+# Variables that are read in from the configuration file
+# Instance URL
+api_base_url = config['tootnotify']['api_base_url']
+# API Client Key
+client_id = config['tootnotify']['client_id']
+# API Client Secret
+client_secret = config['tootnotify']['client_secret']
+# API Access Token
+access_token = config['tootnotify']['access_token']
+# Default recipient for the private toots
+DEFAULT_RECIPIENT = config['tootnotify']['DEFAULT_RECIPIENT']
 
 # Setup the Mastodon API credentials and access, using the values imported from
 # the 'credentials.py' file within the project folder.
@@ -227,7 +261,7 @@ def check_media_upload(media_id_dict, verbose=False):
         print(f"API ERROR: Could not verify media update!\n\t{e}")
         status = None
 
-    # If the status's url is not None, return a true value
+    # If the status's URL is not None, return a true value
     if status['url'] != None:
         ready = True
 

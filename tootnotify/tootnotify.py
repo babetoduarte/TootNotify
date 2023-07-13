@@ -106,7 +106,7 @@ def main(argv):
         # Description of the program
         description="Send a Direct Message to someone on Mastodon!",
         # Footnote that appears after the help dialog
-        epilog="Developed by Jorge Duarte - babetoduarte@gmail.com",
+        epilog="Thank you for using TootNotify!",
     )
 
     # Argument for the message recipient

@@ -41,7 +41,7 @@ TootNotify looks for API credentials stored as variables in the `~/.tootnotifyrc
 Make sure that the content of `~/.tootnotify` correspond to the following (and be sure to assign values to these variables **without any quotes**!):
 
 ``` shell
-## FILE: ~/tootnotifyrc
+## FILE: ~/.tootnotifyrc
 [tootnotify]
 # Instance url (e.g. https://mastodon.social)
 api_base_url = YOUR_INSTANCE_URL

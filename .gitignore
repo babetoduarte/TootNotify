@@ -19,4 +19,3 @@ htmlcov
 build
 dist
 tootnotify.egg-info
-tootnotify/credentials.py

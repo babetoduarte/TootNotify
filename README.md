@@ -15,7 +15,7 @@ This tool allows to *attach* image, video and audio files to the direct message:
     
 Due to mastodon's API specifications, media attached to posts must be of the same type: only images (up to 4 images per *Toot*), only video (a *single* video file __or GIF__), or only audio (a single *audio* file). **The current implementation allows the API to determine the MIME type of each media file by the media's extension**.
 
-Note that these **attachments are done asynchronously** following Mastodon's guidelines, and the *Toot* is not sent until all data is uploaded (confirmed by the API call), which means your notification may take a few seconds to be sent while the attachments are uploaded. __If the upload takes more than the stipulated timeout parameter, the *Toot* is sent without any media__ (better to receive an incomplete notification than no notificatio at all!).
+Note that these **attachments are done asynchronously** following Mastodon's guidelines, and the *Toot* is not sent until all data is uploaded (confirmed by the API call), which means your notification may take a few seconds to be sent while the attachments are uploaded. __If the upload takes more than the stipulated timeout parameter, the *Toot* is sent without any media__ (better to receive an incomplete notification than no notification at all!).
 
 There are also command line arguments to flag your post as `sensitive content` (which will blur out the media you upload), as well as labeling the direct message with a `spoiler/content warning`, which will force the recipient to read your warning and click `Show More` to see the body and attachments of the message.
 
@@ -35,11 +35,11 @@ This section presents the steps needed to install TootNotify, once the API crede
 
 ### Create `~/.tootnotifyrc` file
 
-TootNotify looks for API credentials stored as variables in the `~/.tootnotifyrc` file within the users `$HOME` folder. By default, **the `.tootnotifyrc` file is not shipped with the project, which means you need to create it**:
+TootNotify looks for API credentials stored as variables in the `~/.tootnotifyrc` file within the user's `$HOME` folder. By default, **the `.tootnotifyrc` file is not shipped with the project, which means you need to create it**:
 
 `foo@bar:~$> touch ~/.tootnotifyrc`
 
-Make sure that the content of `~/.tootnotify` correspond to the following (and be sure to assign values to these variables **without any quotes**!):
+Make sure that the content of `~/.tootnotify` corresponds to the following (and be sure to assign values to these variables **without any quotes**!):
 
 ``` shell
 ## FILE: ~/.tootnotifyrc

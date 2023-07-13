@@ -7,7 +7,7 @@ packages = ["tootnotify"]
 
 [project]
 name = "tootnotify"
-version = "1.0.0b"
+version = "1.0.0-RC1"
 authors = [
     {name="Jorge A. Duarte", email="babetoduarte@gmail.com"},
 ]
@@ -19,7 +19,6 @@ dependencies = [
     "mastodon.py>=1.8.0"
 ]
 classifiers = [
-    "Private :: Do Not Upload",
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",

@@ -28,6 +28,7 @@ The simplest way to do this, is through the Mastodon web interface: go to Prefer
 ![Mastodon Preferences - Development Settings](./media/0-mastodon_app_credentials.png "Mastodon Preferences - Development Settings")
 
 Once there, click on the `New Application` button. There, give your application a Name, and click the `Submit` button on the bottom of the page. Having created an App on your account, you should be presented with a `Client key`, a `Client secret`, and `Your Access Token`. You'll need to put these strings into a text configuration file called `.tootnotifyrc` located in your `$HOME` directory, as instructed below.
+
 ## Installation
 
 This section presents the steps needed to install TootNotify, once the API credentials have been obtained.
@@ -59,7 +60,15 @@ Among the variables, a DEFAULT_RECIPIENT can be configured, so that when using T
 
 `foo@bar:~$> tootnotify -m "Message to the default recipient!"`
 
-### Install via PIP
+### Install from PyPI
+
+Once the `~/.tootnotifyrc` control file is in place, we can use PIP to install TootNotify from PyPI
+
+``` bash
+foo@bar:~$> pip install tootnotify
+```
+
+### Install from this repository
 
 Once the `~/.tootnotifyrc` control file is in place, we can use PIP to install TootNotify (make sure you navigate to the root of the `TootNotify` project folder):
 

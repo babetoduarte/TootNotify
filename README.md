@@ -7,7 +7,7 @@ This is a python command line utility based on [Mastodon.py](https://github.com/
 I built this tool to **notify myself via a secondary (bot) Mastodon account, when long-running processes and tasks finish**. FIY, **you don't need a second account to use TootNotify**, you can use your own account and DM yourself! Also, I'm sure there can be many more uses for this tool.
 
 
->Becasue of the way Mastodon works, direct messages are just regular *Toots* that mention a single user on the content of its body, and are set to have `private` visibility (only the accounts mentioned can see the *Toot*).
+>Because of the way Mastodon works, direct messages are just regular *Toots* that mention a single user on the content of its body, and are set to have `private` visibility (only the accounts mentioned can see the *Toot*).
 
 This tool allows to *attach* image, video and audio files to the direct message:
 
@@ -23,7 +23,7 @@ There are also command line arguments to flag your post as `sensitive content` (
 
 To use this tool you will need to have a Mastodon API application created, with its corresponding API credentials. 
 
-The simplest way to do this, is through the Mastodon web interface: go to Preferences > Development (*i.e.* [mastodon.social/settings/applications](mastodon.social/settings/applications))
+The simplest way to do this, is through the Mastodon web interface: go to Preferences > Development (*i.e.* [mastodon.social/settings/applications](https://mastodon.social/settings/applications))
 
 ![Mastodon Preferences - Development Settings](./media/0-mastodon_app_credentials.png "Mastodon Preferences - Development Settings")
 

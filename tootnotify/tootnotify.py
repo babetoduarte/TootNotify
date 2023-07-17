@@ -218,7 +218,8 @@ def main():
     toot = send_toot(message=args.message, user=args.recipient,
                      spoiler=args.spoiler,
                      media=add_media(post_media, args.timeout, verbose),
-                     sensitive=args.sensitive)
+                     sensitive=args.sensitive,
+                     verbose=verbose)
 
     # Exit cleanly
     if toot:
@@ -400,8 +401,6 @@ def send_toot(message, user=DEFAULT_RECIPIENT,
     value depending on whether sending the Toot (with or without media, in case
     the upload fails) was successful or not.
     """
-    # Default output variable
-    success = False
 
     # Construct the status message for the Toot, make sure it is a Direct
     # Message by mentioning the recipient first, and then attaching the content
@@ -421,10 +420,18 @@ def send_toot(message, user=DEFAULT_RECIPIENT,
 
         # If successful, change default output variable to True
         success = True
+
+        # If verbose, inform the user Toot was sent!
+        if verbose:
+            print(f"SUCCESS: Toot sent!")
+
     # If something goes wrong sending the Toot
     except Exception as e:
+        # If verbose, infor the user something went wrong
+        if verbose:
+            print(f"ERROR: Toot could not be sent!")
         # Catch and show the exception
-        print(f"ERROR: {e}")
+        print(f"API ERROR: {e}")
 
         # Make sure the default output variable is set to False
         success = False

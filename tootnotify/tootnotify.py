@@ -200,10 +200,7 @@ def main():
 
     # Make sure the number of attached files does not exceed the maximum number
     # of attached images for Mastodon: maximum 4 images!
-    if not len(post_media) <= 4:
-        print(f"WARNING: the numer of attached media exceeds the maximum "
-              f"allowed per post (4). Only adding the first four files!")
-        post_media = post_media[:4]
+    check_media_file_list(media_list=post_media, verbose=verbose)
 
     # If verbose, print the recipient, message and spoiler text
     if verbose:
@@ -232,6 +229,27 @@ def main():
         if verbose:
             print("FAIL: Failed to send Toot!")
         exit(1)
+
+
+def check_media_file_list(media_list, verbose=False):
+    """ Check that a list of file names is only up to 4 items long.
+
+    This function makes sure that a given list of media files to attach is
+    only allowed to contain a maximum number of 4 files. All filenames in
+    excess of 4 will be dropped, and the list will be truncated.
+    """
+    # If the media file list has more than 4 media files
+    if not len(media_list) <= 4:
+        # If verbose, notify user that list will be truncated
+        if verbose:
+            print(f"WARNING: the numer of attached media exceeds the maximum "
+                  f"allowed per post (4). Only adding the first four files!")
+
+        # Truncate the media file list
+        media_list = media_list[:4]
+
+    # Return the verified/truncated media file list
+    return media_list
 
 
 def check_media_upload(media_id_dict, verbose=False):

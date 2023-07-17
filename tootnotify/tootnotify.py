@@ -60,7 +60,7 @@ from time import sleep
 from mastodon import Mastodon
 
 # Read the user's configuration file stored in (~/.tootnotifyrc)
-# Instantiate a configutation parser
+# Instantiate a configuration parser
 config = ConfigParser()
 # Try to read the configuration file
 try:
@@ -87,12 +87,13 @@ access_token = config['tootnotify']['access_token']
 # Default recipient for the private toots
 DEFAULT_RECIPIENT = config['tootnotify']['DEFAULT_RECIPIENT']
 
-# Setup the Mastodon API credentials and access, using the values imported from
+# Set up the Mastodon API credentials and access, using the values imported from
 # the '~/.tootnotifyrc' file within the users $HOME folder.
 mastodon = Mastodon(client_id,
                     client_secret,
                     access_token,
                     api_base_url)
+
 
 def main(argv):
     """Main function of the program, which runs when TootNotify is invoked.
@@ -154,7 +155,7 @@ def main(argv):
         help="Flag post/media as sensitive content (blur media)."
     )
 
-   # Argument for media upload timeout
+    # Argument for media upload timeout
     parser.add_argument(
         "-t",
         "--timeout",
@@ -186,7 +187,6 @@ def main(argv):
     if VERBOSE:
         print(f"ARGV: {args}")
 
-
     # If only one media file is passed into the script, make sure it gets
     # converted into a dictionary containing the single path of the media file
     if isinstance(args.files, str):
@@ -204,7 +204,6 @@ def main(argv):
         print(f"WARNING: the numer of attached media exceeds the maximum "
               f"allowed per post (4). Only adding the first four files!")
         post_media = post_media[:4]
-
 
     # If verbose, print the recipient, message and spoiler text
     if VERBOSE:
@@ -225,7 +224,7 @@ def main(argv):
     if toot:
         # If verbose, inform of success
         if VERBOSE:
-            print("SUCCESS: Toot sent succesfully!")
+            print("SUCCESS: Toot sent successfully!")
         exit(0)
     else:
         # If verbose, inform of failure
@@ -262,7 +261,7 @@ def check_media_upload(media_id_dict, verbose=False):
         status = None
 
     # If the status's URL is not None, return a true value
-    if status['url'] != None:
+    if status['url'] is not None:
         ready = True
 
     # Return the check outcome
@@ -299,7 +298,7 @@ def upload_wait(filename, media_id_dict, max_wait=30, verbose=False):
 
         # If the media has uploaded successfully
         if check_media_upload(media_id_dict):
-            #If verbose, inform that the media was uploaded successfully
+            # If verbose, inform that the media was uploaded successfully
             if verbose:
                 print("\nUpload successful!")
             # Change the return value to True
@@ -352,7 +351,8 @@ def add_file(media_file, description=None, sync=False,
                 print(f"WARNING: Could not confirm the media was uploaded! ")
     # Catch any exception, and notify the user of the error
     except Exception as e:
-        print(f"ERROR: Could not determine added file's MIME type!\nMastodon only supports image, video, or audio files.\n\tERROR: {e}")
+        print(f"ERROR: Could not determine added file's MIME type!\n"
+              f"Mastodon only supports image, video, or audio files.\n\tERROR: {e}")
         # If verbose, print warning explaining which file could not be uploaded
         if verbose:
             print(f"WARNING: Could not add media {media_file}! "
@@ -379,7 +379,7 @@ def add_media(media_files, timeout=30, verbose=False):
         # dictionary to the output list
         media_ids.append(add_file(media_file, timeout=timeout, verbose=verbose))
 
-    # If no media IDs are returnes (empty media_ids list)
+    # If no media IDs are returned (empty media_ids list)
     if not media_ids:
         # Return None instead of an empty list
         media_ids = None
@@ -409,7 +409,7 @@ def send_toot(message, user=DEFAULT_RECIPIENT,
     # to 'direct'.
     status_message = f"{user}\n {message}"
 
-    # Try to sent the Toot
+    # Try to send the Toot
     try:
         # Compose and sent the Toot including any media, spoiler text, and flag
         # for sensitive content or not
@@ -419,7 +419,7 @@ def send_toot(message, user=DEFAULT_RECIPIENT,
                              spoiler_text=spoiler,
                              sensitive=sensitive)
 
-        # If succesfull, change default output variable to True
+        # If successful, change default output variable to True
         success = True
     # If something goes wrong sending the Toot
     except Exception as e:

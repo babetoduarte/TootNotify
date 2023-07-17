@@ -16,6 +16,5 @@ htmlcov
 .code-workspace
 
 # Project files
-build
 dist
 tootnotify.egg-info

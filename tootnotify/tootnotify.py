@@ -54,7 +54,7 @@ user, the recipient address doesn't have to be provided every time.
 import argparse
 from configparser import ConfigParser
 from pathlib import Path
-from sys import argv, exit, stdout
+from sys import exit, stdout
 from time import sleep
 
 from mastodon import Mastodon
@@ -95,7 +95,7 @@ mastodon = Mastodon(client_id,
                     api_base_url)
 
 
-def main(argv):
+def main():
     """Main function of the program, which runs when TootNotify is invoked.
     """
     # Define the parser for handling the arguments passed into the script, as
@@ -181,10 +181,10 @@ def main(argv):
     args = parser.parse_args()
 
     # Global constant which colds the verbose flag
-    VERBOSE = args.verbose
+    verbose = args.verbose
 
     # If verbose, print out the arguments Namespace() object
-    if VERBOSE:
+    if verbose:
         print(f"ARGV: {args}")
 
     # If only one media file is passed into the script, make sure it gets
@@ -206,7 +206,7 @@ def main(argv):
         post_media = post_media[:4]
 
     # If verbose, print the recipient, message and spoiler text
-    if VERBOSE:
+    if verbose:
         print(f"\tRECIPIENT: {args.recipient}\n\tMESSAGE: {args.message}\n\t"
               f"SPOILER: {args.spoiler}\n\tMEDIA: {post_media}\n\t"
               f"SENSITIVE: {args.sensitive}\n\tTIMEOUT: {args.timeout}s")
@@ -217,18 +217,18 @@ def main(argv):
     # 3. Attached media consists of only ONE video file
     toot = send_toot(message=args.message, user=args.recipient,
                      spoiler=args.spoiler,
-                     media=add_media(post_media, args.timeout, VERBOSE),
+                     media=add_media(post_media, args.timeout, verbose),
                      sensitive=args.sensitive)
 
     # Exit cleanly
     if toot:
         # If verbose, inform of success
-        if VERBOSE:
+        if verbose:
             print("SUCCESS: Toot sent successfully!")
         exit(0)
     else:
         # If verbose, inform of failure
-        if VERBOSE:
+        if verbose:
             print("FAIL: Failed to send Toot!")
         exit(1)
 
@@ -434,10 +434,10 @@ def send_toot(message, user=DEFAULT_RECIPIENT,
 
 
 def run_cli():
-    exit(main(argv))
+    exit(main())
 
 
 # If this script is executed from the command line
 if __name__ == '__main__':
     # Try to run main() function with the provided arguments
-    main(argv)
+    main()

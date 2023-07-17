@@ -434,6 +434,8 @@ def send_toot(message, user=DEFAULT_RECIPIENT,
 
 
 def run_cli():
+    """Function that is called when tootnotify is called as a script installed using PIP"""
+    # Make sure to call main() wrapped in an exit() call (as per PyPI documentation)
     exit(main())
 
 

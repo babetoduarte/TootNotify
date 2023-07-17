@@ -10,6 +10,9 @@ tmp/
 build
 htmlcov
 
+# Pytest
+tests/.pytest_cache
+
 # IDE / Editor files
 .project
 .vscode
